@@ -4,6 +4,27 @@
 
 body {
   font-family: 'Aeonik', sans-serif; /* Default to Poppins */
+  background-color: rgb(243, 243, 243);
+}
+
+body.bg-gray-900 {
+  background-color: #1a202c; /* Dark background */
+  color: #e2e8f0; /* Light text */
+}
+
+body.bg-white {
+  background-color: #ffffff; /* Light background */
+  color: #1a202c; /* Dark text */
+}
+
+body.light {
+  background-color: #ffffff;
+  color: #1a202c;
+}
+
+body.dark {
+  background-color: #1a202c; /* Dark background */
+  color: #e2e8f0; /* Light text */
 }
 
 h1, h2, h3, h4, h5, h6, p, span, a, li, button {
@@ -55,55 +76,52 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/*:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.navbar.light {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+.navbar.dark {
+  background-color: #2d3748; /* Dark navbar background */
+  border-bottom: 1px solid #4a5568;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+.theme-toggle-btn {
+  display: flex; /* Use flexbox */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  background-color: #f3f4f600;
+  border-radius: 50%; /* Make it a circle */
+  padding: 0.5rem; /* Add spacing inside the circle */
+  width: 2.5rem; /* Ensure the button is a perfect circle */
+  height: 2.5rem; /* Match width for a circle */
+  transition: background-color 0.3s ease;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.theme-toggle-btn:hover {
+  background-color: #e5e7eb;
 }
 
-
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.theme-toggle-btn.dark {
+  background-color: #4a5568;
 }
-*/
+
+.theme-toggle-btn.dark:hover {
+  background-color: #2d3748;
+}
+
+.bg-gray-800 {
+  background-color: #2d3748; /* Card background in dark mode */
+}
+
+.text-gray-100 {
+  color: #f7fafc; /* Light text for headings in dark mode */
+}
+
+.text-gray-400 {
+  color: #a0aec0; /* Muted text for descriptions in dark mode */
+}
+
+.bg-gray-700 {
+  background-color: #4a5568; /* Icon background in dark mode */
+}
