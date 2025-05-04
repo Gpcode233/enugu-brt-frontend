@@ -13,7 +13,7 @@ import Dashboard from './pages/Dashboard';
 
 function Layout() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen overflow-x-hidden">
       <Navbar />
       <main className="flex-1">
         <Outlet />
@@ -30,7 +30,7 @@ function Navbar() {
   const navigate = useNavigate();
 
 
-  // Load user from localStorage
+  // Loads user from localStorage
   useEffect(() => {
     const loadUser = () => {
       const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -64,7 +64,7 @@ function Navbar() {
             Njem BRT
           </NavLink>
 
-          <div className="hidden md:flex gap-4 ml-78">
+          <div className="hidden md:flex gap-4 ml-72">
             <NavLink to="/" end className={navLinkClass}>Plan Journey</NavLink>
             <NavLink to="/routes" className={navLinkClass}>Routes</NavLink>
             <NavLink to="/verify-ticket" className={navLinkClass}>Verify Ticket</NavLink>
