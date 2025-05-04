@@ -1,4 +1,6 @@
+import 'react-toastify/dist/ReactToastify.css';
 import { useState, useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
 import { Routes, Route, useNavigate, Outlet, NavLink, useLocation } from 'react-router-dom';
 import ModalWrapper from './components/ModalWrapper';
 import RegisterPage from './pages/RegisterPage';
