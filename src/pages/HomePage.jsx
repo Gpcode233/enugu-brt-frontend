@@ -9,7 +9,7 @@ function HomePage() {
         <p className="mb-6 text-gray-400 font-normal">Find the fastest and most convenient BRT routes. Select your origin, destination, and let us handle the planning.</p>
         <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
           {/* Plan Route Button */}
-          <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded shadow font-medium flex items-center justify-center gap-2 text-base mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-107">
+          <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded shadow font-medium flex items-center justify-center gap-2 text-base mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-105">
           <svg width="17" height="17" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M13.3075 2.1057C13.2476 2.05903 13.1779 2.02661 13.1036 2.01091C13.0293 1.99521 12.9524 1.99663 12.8788 2.01507L9.05815 2.97008L5.22376 1.05257C5.11693 0.999282 4.99455 0.98598 4.87876 1.01507L0.878751 2.01507C0.770581 2.04211 0.674552 2.10453 0.605927 2.19241C0.537301 2.28028 0.500017 2.38858 0.5 2.50007V11.5001C0.500012 11.5761 0.517337 11.6511 0.550661 11.7193C0.583984 11.7876 0.63243 11.8474 0.692317 11.8941C0.752205 11.9409 0.821959 11.9734 0.896282 11.9892C0.970606 12.0049 1.04754 12.0035 1.12125 11.9851L4.94189 11.0301L8.77627 12.9476C8.84588 12.9819 8.92242 12.9999 9.00003 13.0001C9.0409 13.0001 9.08162 12.995 9.12128 12.9851L13.1213 11.9851C13.2295 11.9581 13.3255 11.8956 13.3941 11.8078C13.4627 11.7199 13.5 11.6116 13.5 11.5001V2.50007C13.5001 2.42403 13.4827 2.34898 13.4494 2.28064C13.416 2.2123 13.3675 2.15247 13.3075 2.1057ZM5.50001 2.30882L8.50002 3.80883V11.6914L5.50001 10.1913V2.30882ZM1.5 2.8907L4.50001 2.1407V10.1095L1.5 10.8595V2.8907ZM12.5 11.1095L9.50003 11.8595V3.8907L12.5 3.1407V11.1095Z" fill="white"/>
 </svg>
@@ -17,7 +17,7 @@ function HomePage() {
           </button>
 
           {/* View All Routes Button */}
-          <button className="border border-gray-200 hover:border-green-600 text-green-700 bg-white px-6 py-3 rounded shadow font-medium flex items-center justify-center gap-2 text-base mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-107">
+          <button className="border border-gray-200 hover:border-green-600 text-green-700 bg-white px-6 py-3 rounded shadow font-medium flex items-center justify-center gap-2 text-base mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-105">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#26ae63" strokeWidth="2">
               <path d="M9 12h6M9 16h6M9 8h6m-7 12h8a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z" />
             </svg>
@@ -202,7 +202,7 @@ function HomePage() {
       <h2 className="mt-3 font-bold text-3xl text-gray-900">Popular Routes</h2>
 
       <div className="flex justify-center gap-5">
-  <div className="bg-white rounded-md shadow-md w-80 overflow-hidden mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-107">
+  <div className="bg-white rounded-md shadow-md w-80 overflow-hidden mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-105">
     <div className="py-15 bg-gradient-to-r from-green-700 to-green-400 text-white text-center font-bold text-lg ">
       Holy Ghost → IMT Campus
     </div>
@@ -217,7 +217,7 @@ function HomePage() {
     </div>
   </div>
 
-        <div className="bg-white rounded-md shadow-md w-80 overflow-hidden mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-107">
+        <div className="bg-white rounded-md shadow-md w-80 overflow-hidden mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-105">
           <div className={`py-15 bg-gradient-to-r from-blue-800 to-blue-400 text-white text-center font-bold text-lg`}>
             Holy Ghost → Agbani Town
           </div>
@@ -232,7 +232,7 @@ function HomePage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-md shadow-md w-80 overflow-hidden mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-107">
+        <div className="bg-white rounded-md shadow-md w-80 overflow-hidden mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-105">
           <div className={`py-15 bg-gradient-to-r from-orange-700 to-orange-400 text-white text-center font-bold text-lg`}>
             UNEC → Okpara Avenue
           </div>
