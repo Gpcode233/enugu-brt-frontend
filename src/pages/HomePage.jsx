@@ -10,9 +10,9 @@ function HomePage() {
         <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
           {/* Plan Route Button */}
           <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded shadow font-medium flex items-center justify-center gap-2 text-base mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-107">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="2">
-              <path d="M9 20l-5.447-2.724A2 2 0 0 1 2 15.447V6.553a2 2 0 0 1 1.553-1.947L9 2m6 0l5.447 2.724A2 2 0 0 1 22 8.553v8.894a2 2 0 0 1-1.553 1.947L15 22M9 2v18m6-18v18" />
-            </svg>
+          <svg width="17" height="17" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.3075 2.1057C13.2476 2.05903 13.1779 2.02661 13.1036 2.01091C13.0293 1.99521 12.9524 1.99663 12.8788 2.01507L9.05815 2.97008L5.22376 1.05257C5.11693 0.999282 4.99455 0.98598 4.87876 1.01507L0.878751 2.01507C0.770581 2.04211 0.674552 2.10453 0.605927 2.19241C0.537301 2.28028 0.500017 2.38858 0.5 2.50007V11.5001C0.500012 11.5761 0.517337 11.6511 0.550661 11.7193C0.583984 11.7876 0.63243 11.8474 0.692317 11.8941C0.752205 11.9409 0.821959 11.9734 0.896282 11.9892C0.970606 12.0049 1.04754 12.0035 1.12125 11.9851L4.94189 11.0301L8.77627 12.9476C8.84588 12.9819 8.92242 12.9999 9.00003 13.0001C9.0409 13.0001 9.08162 12.995 9.12128 12.9851L13.1213 11.9851C13.2295 11.9581 13.3255 11.8956 13.3941 11.8078C13.4627 11.7199 13.5 11.6116 13.5 11.5001V2.50007C13.5001 2.42403 13.4827 2.34898 13.4494 2.28064C13.416 2.2123 13.3675 2.15247 13.3075 2.1057ZM5.50001 2.30882L8.50002 3.80883V11.6914L5.50001 10.1913V2.30882ZM1.5 2.8907L4.50001 2.1407V10.1095L1.5 10.8595V2.8907ZM12.5 11.1095L9.50003 11.8595V3.8907L12.5 3.1407V11.1095Z" fill="white"/>
+</svg>
             Plan Route Now
           </button>
 
@@ -40,23 +40,23 @@ function HomePage() {
           {/* Card 2 */}
           <div className="bg-white rounded-xl shadow p-6 border-t-4 border-blue-400 flex flex-col items-start mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-106">
             <span className="bg-blue-50 rounded-full p-2 mb-4">
-              <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="10" rx="2" stroke="#3490eb" strokeWidth="2" /><path d="M8 12h4v4" stroke="#3490eb" strokeWidth="2" strokeLinecap="round"/></svg>
+            <img width="32" height="32" src="https://img.icons8.com/ios/32/bank-card-back-side--v1.png" alt="bank-card-back-side--v1"/>
             </span>
             <h3 className="text-lg font-semibold mb-1">Secure Digital Payments</h3>
             <p className="text-sm text-gray-600">Purchase tickets online hassle-free using Paystack. Quick, convenient, and secure.</p>
           </div>
           {/* Card 3 */}
-          <div className="bg-white rounded-xl shadow p-6 border-t-4 border-yellow-400 flex flex-col items-start mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-106">
-            <span className="bg-yellow-50 rounded-full p-2 mb-4">
-              <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="10" rx="2" stroke="#e99c18" strokeWidth="2" /><path d="M9 14l3-3 3 3" stroke="#e99c18" strokeWidth="2" strokeLinecap="round"/></svg>
-            </span>
-            <h3 className="text-lg font-semibold mb-1">Safe &amp; Comfortable Ride</h3>
-            <p className="text-sm text-gray-600">Travel in modern, air-conditioned buses equipped with security features for your peace of mind.</p>
-          </div>
-        </div>
-      </section>
+                <div className="bg-white rounded-xl shadow p-6 border-t-4 border-yellow-400 flex flex-col items-start mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-106">
+                <span className="bg-yellow-50 rounded-full p-2 mb-4">
+                <img width="32" height="32" className='text-yellow-400' src="https://img.icons8.com/ios/32/security-checked--v1.png" alt="security-checked--v1"/>
+                </span>
+                <h3 className="text-lg font-semibold mb-1">Safe &amp; Comfortable Ride</h3>
+                <p className="text-sm text-gray-600">Travel in modern, air-conditioned buses equipped with security features for your peace of mind.</p>
+                </div>
+              </div>
+              </section>
 
-      {/* HOW IT WORKS SECTION */}
+              {/* HOW IT WORKS SECTION */}
       <section className="bg-green-50 py-9 px-4">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-green-700 mb-6">How It Works</h2>
