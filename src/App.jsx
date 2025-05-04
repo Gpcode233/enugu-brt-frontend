@@ -173,7 +173,7 @@ function Footer() {
 
         {/* Quick Links */}
         <div>
-          <h4 className="text-white text-lg font-semibold mb-3">Quick Links</h4>
+          <h4 className="text-white text-lg font-normal mb-3">Quick Links</h4>
           <ul className="space-y-2 text-sm">
             <li><NavLink to="/" className="hover:text-green-400">Home</NavLink></li>
             <li><NavLink to="/routes" className="hover:text-green-400">Routes</NavLink></li>
@@ -185,7 +185,7 @@ function Footer() {
 
         {/* Contact Info */}
         <div>
-          <h4 className="text-white text-lg font-semibold mb-3">Contact</h4>
+          <h4 className="text-white text-lg font-normal mb-3">Contact</h4>
           <p className="text-sm text-gray-400">Email: support@njembrt.com</p>
           <p className="text-sm text-gray-400">Phone: +234 808 065 1985</p>
           <p className="text-sm text-gray-400">       +234 804 502 6868</p>

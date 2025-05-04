@@ -3,12 +3,41 @@
 
 
 body {
-  font-family: 'Inter', sans-serif; /* Default to Poppins */
+  font-family: 'Aeonik', sans-serif; /* Default to Poppins */
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Inter', sans-serif; 
+h1, h2, h3, h4, h5, h6, p, span, a, li, button {
+  font-family: 'Aeonik', sans-serif; 
 }
+
+@font-face {
+  font-family: 'Aeonik';
+  src: url('./assets/fonts/Aeonik-Light.otf') format('opentype');
+  font-weight: lighter;
+  font-style: light;
+}
+
+@font-face {
+  font-family: 'Aeonik';
+  src: url('./assets/fonts/Aeonik-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Aeonik';
+  src: url('./assets/fonts/Aeonik-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: bold;
+}
+
+@font-face {
+  font-family: 'Aeonik';
+  src: url('./assets/fonts/Aeonik-Bold.otf') format('opentype');
+  font-weight: bolder;
+  font-style: extra-bold;
+}
+
 button {
   border-radius: 8px;
   padding: 0.6em 1.2em;

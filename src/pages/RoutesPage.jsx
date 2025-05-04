@@ -1,5 +1,19 @@
 import React, { useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
+
+// Helper component to center map on selected route
+function RouteFocus({ coordinates }) {
+  const map = useMap();
+
+  React.useEffect(() => {
+    if (coordinates?.length) {
+      const bounds = coordinates.map(coord => [coord[0], coord[1]]);
+      map.fitBounds(bounds, { padding: [20, 20] });
+    }
+  }, [coordinates, map]);
+
+  return null;
+}
 
 function RoutesPage() {
   const [activeRouteIndex, setActiveRouteIndex] = useState(null); // Track active route by index
@@ -12,16 +26,18 @@ function RoutesPage() {
       notes: 'Serves the northern Ogui Road corridor, linking the central hub to the IMT educational institution.',
       color: 'blue',
       coordinates: [
-        [6.4433, 7.5139], // Holy Ghost
-        [6.4450, 7.5200], // Asata Chemist
-        [6.4475, 7.5250], // Ogui Junction
-        [6.4500, 7.5300], // IMT Campus
+        [6.4433, 7.5139],
+        [6.4450, 7.5200],
+        [6.4475, 7.5250],
+        [6.4500, 7.5300],
+        [6.4520, 7.5350],
       ],
       stops: [
         { name: 'Holy Ghost Terminal', description: 'Primary central bus terminal and transfer hub.', position: [6.4433, 7.5139] },
         { name: 'Asata Chemist', description: 'Stop serving the Asata area along Ogui Road.', position: [6.4450, 7.5200] },
         { name: 'Ogui Junction', description: 'Major intersection connecting Ogui Road.', position: [6.4475, 7.5250] },
         { name: 'IMT Campus', description: 'Final stop at the IMT educational institution.', position: [6.4500, 7.5300] },
+        { name: 'IMT Annex', description: 'Annex of IMT Campus.', position: [6.4520, 7.5350] },
       ],
     },
     {
@@ -30,38 +46,59 @@ function RoutesPage() {
       notes: 'Main southern route via Agbani Rd, serving key locations like Gariki Market and ESUT gate access.',
       color: 'green',
       coordinates: [
-        [6.4433, 7.5139], // Holy Ghost
-        [6.4400, 7.5100], // Mayor Bus Stop
-        [6.4300, 7.5000], // Gariki Market
-        [6.4200, 7.4900], // ESUT Gate
-        [6.4100, 7.4800], // Agbani Town
+        [6.4433, 7.5139],
+        [6.4400, 7.5100],
+        [6.4300, 7.5000],
+        [6.4200, 7.4900],
+        [6.4100, 7.4800],
+        [6.4050, 7.4750],
       ],
       stops: [
         { name: 'Holy Ghost Terminal', description: 'Primary central bus terminal and transfer hub.', position: [6.4433, 7.5139] },
         { name: 'Mayor Bus Stop', description: 'Stop serving the Mayor area along Agbani Road.', position: [6.4400, 7.5100] },
         { name: 'Gariki Market', description: 'Major market stop along Agbani Road.', position: [6.4300, 7.5000] },
         { name: 'ESUT Gate', description: 'Stop near the Enugu State University of Technology.', position: [6.4200, 7.4900] },
-        { name: 'Agbani Town', description: 'Final stop at Agbani Town.', position: [6.4100, 7.4800] },
+        { name: 'Agbani Market', description: 'Market stop in Agbani Town.', position: [6.4050, 7.4750] },
       ],
     },
     {
-      name: 'UNEC → Okpara Avenue',
-      description: 'Connects UNEC Campus, Holy Ghost Hub, and Okpara Ave Hub via Zik Ave, Edinburgh Rbt, Parklane/Polo.',
-      notes: 'Crucial connector route linking the southern UNEC area (Gate), the central Holy Ghost hub, and the GRA/Admin Okpara Ave hub via Polo Park.',
-      color: 'orange',
+      name: 'Opara Avenue → Emene',
+      description: 'Runs eastward from Opara Avenue through Abakaliki Road, Airport Flyover, to Emene.',
+      notes: 'Links city center to industrial and residential areas around Emene and Airport zone.',
+      color: 'purple',
       coordinates: [
-        [6.4233, 7.5000], // UNEC Main Gate
-        [6.4300, 7.5100], // Rangers Ave Junction
-        [6.4400, 7.5200], // Edinburgh Roundabout
-        [6.4433, 7.5139], // Holy Ghost
-        [6.4500, 7.5250], // Okpara Avenue
+        [6.4470, 7.5110], // Opara Avenue
+        [6.4495, 7.5200], // Abakaliki Road
+        [6.4560, 7.5350], // Airport Flyover
+        [6.4610, 7.5480], // Eke Emene
+        [6.4660, 7.5550], // Emene Industrial Layout
+        [6.4700, 7.5600], // Emene
       ],
       stops: [
-        { name: 'UNEC Main Gate', description: 'Main entrance stop & functional terminal for University of Nigeria Enugu Campus.', position: [6.4233, 7.5000] },
-        { name: 'Rangers Ave Junction', description: 'Junction accessing Rangers Avenue and parts of Independence Layout.', position: [6.4300, 7.5100] },
-        { name: 'Edinburgh Roundabout', description: 'Major roundabout connecting Zik Avenue and Polo Park.', position: [6.4400, 7.5200] },
-        { name: 'Holy Ghost Terminal', description: 'Primary central bus terminal and transfer hub.', position: [6.4433, 7.5139] },
-        { name: 'Okpara Avenue', description: 'Final stop at the administrative/business district.', position: [6.4500, 7.5250] },
+        { name: 'Opara Avenue', description: 'Business hub near Okpara Square and city center.', position: [6.4470, 7.5110] },
+        { name: 'Abakaliki Road Stop', description: 'Connector road leading to the Airport axis.', position: [6.4495, 7.5200] },
+        { name: 'Airport Flyover', description: 'Strategic flyover near Airport junction.', position: [6.4560, 7.5350] },
+        { name: 'Eke Emene', description: 'Main market area in Emene.', position: [6.4610, 7.5480] },
+        { name: 'Emene Industrial Layout', description: 'Industrial area with warehouses and factories.', position: [6.4660, 7.5550] },
+        { name: 'Emene Terminal', description: 'Final bus terminal in Emene zone.', position: [6.4700, 7.5600] },
+      ],
+    },
+    {
+      name: 'New Haven → Akanu Ibiam Airport',
+      description: 'Connects New Haven area to Akanu Ibiam International Airport via Independence Layout.',
+      notes: 'Provides a direct link from the residential New Haven area to the airport.',
+      color: 'orange',
+      coordinates: [
+        [6.4500, 7.5100], // New Haven
+        [6.4550, 7.5200], // Independence Layout
+        [6.4600, 7.5300], // Airport Road
+        [6.4670, 7.5500], // Akanu Ibiam Airport
+      ],
+      stops: [
+        { name: 'New Haven Junction', description: 'Starting point at New Haven area.', position: [6.4500, 7.5100] },
+        { name: 'Independence Layout', description: 'Stop near the Independence Layout area.', position: [6.4550, 7.5200] },
+        { name: 'Airport Road Junction', description: 'Stop along Airport Road.', position: [6.4600, 7.5300] },
+        { name: 'Akanu Ibiam Airport', description: 'Final stop at the Akanu Ibiam International Airport.', position: [6.4670, 7.5500] },
       ],
     },
   ];
@@ -69,29 +106,41 @@ function RoutesPage() {
   return (
     <div className="bg-gray-50 min-h-screen py-12">
       {/* Header Section */}
-      <div className="text-center mb-12">
-        <h1 className="text-3xl md:text-4xl font-extrabold text-green-700">BRT Routes Directory</h1>
-        <p className="text-gray-600 mt-4 text-lg">
+      <div className="text-center mb-8">
+        <h1 className="text-2xl md:text-3xl font-extrabold text-green-700">BRT Routes Directory</h1>
+        <p className="text-gray-600 mt-2 font-normal text-sm md:text-base">
           Explore all available routes and stops within the Enugu BRT network. Click on a route to view its path and stop details on the interactive map.
         </p>
       </div>
 
       {/* Map and Routes Section */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
         {/* Map */}
-        <div className="col-span-2 bg-white shadow-md rounded-lg overflow-hidden">
-          <div className="h-96">
+        <div
+          className="col-span-2 bg-white shadow-md rounded-lg overflow-hidden relative z-0 border-4 border-gray-100"
+          style={{ height: '440px' }} // Fixed height for the map container
+        >
+          <div className="h-full">
             <MapContainer center={[6.4450, 7.5200]} zoom={13} className="w-full h-full">
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               />
+              {/* Auto-center map on selected route */}
+              {activeRouteIndex !== null && (
+                <RouteFocus coordinates={routes[activeRouteIndex].coordinates} />
+              )}
               {/* Render all routes */}
               {routes.map((route, routeIndex) => (
                 <React.Fragment key={routeIndex}>
-                  <Polyline positions={route.coordinates} color={route.color} weight={4} />
+                  <Polyline
+                    positions={route.coordinates}
+                    color={route.color}
+                    weight={activeRouteIndex === routeIndex ? 6 : 3}
+                    opacity={activeRouteIndex === routeIndex ? 1 : 0.5}
+                  />
                   {route.stops.map((stop, stopIndex) => (
-                    <Marker key={stopIndex} position={stop.position}>
+                    <Marker key={`${stop.name}-${stopIndex}`} position={stop.position}>
                       <Popup>
                         <strong>{stop.name}</strong>
                         <p>{stop.description}</p>
@@ -105,34 +154,32 @@ function RoutesPage() {
         </div>
 
         {/* Routes List */}
-        <div className="bg-white shadow-md rounded-lg p-6">
-          <h2 className="text-lg font-bold text-gray-800 mb-4">Available Routes ({routes.length})</h2>
+        <div className="bg-white shadow-md rounded-lg p-4">
+          <h2 className="text-base font-bold text-gray-800 mb-3">Available Routes ({routes.length})</h2>
           {routes.map((route, index) => (
-            <div key={index} className="border border-gray-200 rounded-lg mb-4">
+            <div key={index} className="border border-gray-200 rounded-lg mb-3">
               <div
-                className="flex justify-between items-center px-4 py-3 cursor-pointer"
+                className="flex justify-between items-center px-3 py-2 cursor-pointer"
                 onClick={() => setActiveRouteIndex(activeRouteIndex === index ? null : index)}
               >
                 <div className="flex items-center gap-2">
                   <span className={`w-3 h-3 rounded-full`} style={{ backgroundColor: route.color }}></span>
-                  <span className="text-gray-700 font-medium">{route.name}</span>
+                  <span className="text-gray-700 text-sm font-normal">{route.name}</span>
                 </div>
-                <button className="text-sm text-gray-500 border border-gray-300 rounded px-2 py-1 hover:bg-gray-100">
-                  {activeRouteIndex === index ? ' Stops' : ' Stops'}
+                <button className="text-xs text-gray-500 border border-gray-300 rounded px-2 py-1 hover:bg-gray-100">
+                  {activeRouteIndex === index ? 'Hide Stops' : 'View Stops'}
                 </button>
               </div>
               {activeRouteIndex === index && (
-                <div className="px-4 py-3 border-t border-gray-200">
-                  <p className="text-sm text-gray-600 mb-2">{route.description}</p>
-                  <p className="text-sm text-gray-500 mb-2">{route.notes}</p>
-                  <p className="text-sm text-green-600 font-medium mb-2">Two-way route</p>
-                  <ul className="space-y-2">
+                <div className="px-3 py-2 border-t border-gray-200">
+                  <p className="text-xs text-gray-600 font-light mb-1">{route.description}</p>
+                  <ul className="space-y-1">
                     {route.stops.map((stop, stopIndex) => (
-                      <li key={stopIndex} className="flex items-start gap-2">
-                        <span className="w-3 h-3 bg-red-500 rounded-full mt-1"></span>
+                      <li key={`${stop.name}-${stopIndex}`} className="flex items-start gap-2">
+                        <span className="w-2 h-2 bg-red-500 rounded-full mt-1"></span>
                         <div>
-                          <p className="text-gray-700 font-medium">{stop.name}</p>
-                          <p className="text-sm text-gray-500">{stop.description}</p>
+                          <p className="text-gray-700 text-xs font-medium">{stop.name}</p>
+                          <p className="text-gray-500 text-xs">{stop.description}</p>
                         </div>
                       </li>
                     ))}
@@ -141,6 +188,32 @@ function RoutesPage() {
               )}
             </div>
           ))}
+        </div>
+      </div>
+      <br />
+      <br />
+      {/* Network Information Section */}
+      <div className="max-w-6xl mx-auto mb-8">
+        <div className="bg-white shadow-md rounded-lg p-6 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Network Information</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div>
+              <p className="text-4xl font-bold text-green-700">4</p>
+              <p className="text-lg text-gray-600">TOTAL ROUTES</p>
+            </div>
+            <div>
+              <p className="text-4xl font-bold text-green-700">25</p>
+              <p className="text-lg text-gray-600">TOTAL STOPS</p>
+            </div>
+            <div>
+              <p className="text-4xl font-bold text-green-700">5:30<span className="text-lg">am</span></p>
+              <p className="text-lg text-gray-600">FIRST BUS</p>
+            </div>
+            <div>
+              <p className="text-4xl font-bold text-green-700">10:00<span className="text-lg">pm</span></p>
+              <p className="text-lg text-gray-600">LAST BUS</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
