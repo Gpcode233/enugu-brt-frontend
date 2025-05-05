@@ -241,7 +241,7 @@ function Navbar() {
           <div className="flex flex-col space-y-2">
             <NavLink
               to="/users/login"
-              className="text-white bg-transparent px-4 py-2 rounded transition duration-200 hover:bg-gray-700"
+              className="text-gray-700 bg-transparent px-4 py-2 rounded transition duration-200 hover:bg-gray-700 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Login
             </NavLink>
@@ -309,7 +309,7 @@ export default function App() {
           <Route path="/users/login" element={<LoginPage />} />
           <Route path="/users/register" element={<RegisterPage />} />
           <Route path="/verify-ticket" element={<VerifyTicketPage />} />
-          <Route path="*" element={<NotFoundPage />} />
+          {/* <Route path="*" element={<NotFoundPage />} /> */}
         </Route>
       </Routes>
     </>
