@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Polyline, CircleMarker, useMap } from 'react-leaflet';
+import { useLocation } from 'react-router-dom';
 
 // Helper component to center map on selected route
 function RouteFocus({ coordinates }) {
@@ -16,6 +17,7 @@ function RouteFocus({ coordinates }) {
 }
 
 function RoutesPage() {
+  const location = useLocation(); // Get the state passed from navigate
   const [activeRouteIndex, setActiveRouteIndex] = useState(null); // Track active route by index
 
   // Route data
@@ -102,6 +104,16 @@ function RoutesPage() {
       ],
     },
   ];
+
+  // Automatically set the active route based on the passed state
+  useEffect(() => {
+    if (location.state?.routeName) {
+      const routeIndex = routes.findIndex(route => route.name === location.state.routeName);
+      if (routeIndex !== -1) {
+        setActiveRouteIndex(routeIndex);
+      }
+    }
+  }, [location.state, routes]);
 
   return (
     <div className=" min-h-screen py-12">

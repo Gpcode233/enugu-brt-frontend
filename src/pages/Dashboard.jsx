@@ -34,24 +34,24 @@ function Dashboard() {
             <span className="bg-green-50 rounded-full p-2 mb-4">
               <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#26ae63" strokeWidth="2" /><path d="M8 12h4l2-4" stroke="#26ae63" strokeWidth="2" strokeLinecap="round"/></svg>
             </span>
-            <h3 className="text-lg font-semibold mb-1">Fast &amp; Reliable Service</h3>
-            <p className="text-sm text-gray-600">Frequent buses during peak hours ensure minimal wait times. Dedicated lanes help avoid traffic delays.</p>
+            <h3 className="text-lg font-semibold text-gray-600 mb-1">Fast &amp; Reliable Service</h3>
+            <p className="text-sm text-gray-500">Frequent buses during peak hours ensure minimal wait times. Dedicated lanes help avoid traffic delays.</p>
           </div>
           {/* Card 2 */}
           <div className="bg-white rounded-xl shadow p-6 border-t-4 border-blue-400 flex flex-col items-start mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-106">
             <span className="bg-blue-50 rounded-full p-2 mb-4">
               <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="10" rx="2" stroke="#3490eb" strokeWidth="2" /><path d="M8 12h4v4" stroke="#3490eb" strokeWidth="2" strokeLinecap="round"/></svg>
             </span>
-            <h3 className="text-lg font-semibold mb-1">Secure Digital Payments</h3>
-            <p className="text-sm text-gray-600">Purchase tickets online hassle-free using Paystack. Quick, convenient, and secure.</p>
+            <h3 className="text-lg text-gray-600 font-semibold mb-1">Secure Digital Payments</h3>
+            <p className="text-sm text-gray-500">Purchase tickets online hassle-free using Paystack. Quick, convenient, and secure.</p>
           </div>
           {/* Card 3 */}
           <div className="bg-white rounded-xl shadow p-6 border-t-4 border-yellow-400 flex flex-col items-start mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-106">
             <span className="bg-yellow-50 rounded-full p-2 mb-4">
               <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="10" rx="2" stroke="#e99c18" strokeWidth="2" /><path d="M9 14l3-3 3 3" stroke="#e99c18" strokeWidth="2" strokeLinecap="round"/></svg>
             </span>
-            <h3 className="text-lg font-semibold mb-1">Safe &amp; Comfortable Ride</h3>
-            <p className="text-sm text-gray-600">Travel in modern, air-conditioned buses equipped with security features for your peace of mind.</p>
+            <h3 className="text-lg text-gray-600 font-semibold mb-1">Safe &amp; Comfortable Ride</h3>
+            <p className="text-sm text-gray-500">Travel in modern, air-conditioned buses equipped with security features for your peace of mind.</p>
           </div>
         </div>
       </section>
@@ -168,59 +168,70 @@ function Dashboard() {
       
       {/* POPULAR ROUTES SECTION */}
       <div className="py-5 flex flex-col items-center gap-5">
-      <h2 className="mt-3 font-bold text-3xl text-gray-900">Popular Routes</h2>
+        <h2 className="mt-3 font-bold text-3xl text-gray-900">Popular Routes</h2>
 
-      <div className="flex justify-center gap-5">
-  <div className="bg-white rounded-md shadow-md w-80 overflow-hidden mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-107">
-    <div className="py-15 bg-gradient-to-r from-green-700 to-green-400 text-white text-center font-bold text-lg ">
-      Holy Ghost → IMT Campus
-    </div>
-    <div className="p-4 text-sm text-gray-600">
-      Northern Ogui Rd corridor, connecting the central hub to IMT.
-    </div>
-    <div className="p-4 flex justify-between items-center">
-      <span className="text-xs text-gray-500">Approx. 5 stops</span>
-      <button className="bg-transparent border-none cursor-pointer font-semibold text-sm text-green-400 hover:underline">
-        Plan This Route →
-      </button>
-    </div>
-  </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl px-4">
+          {/* Route Card 1 */}
+          <div className="bg-white rounded-md shadow-md overflow-hidden transform transition-transform duration-400 hover:scale-103">
+            <div className="py-15 bg-gradient-to-r from-green-700 to-green-400 text-white text-center font-bold text-lg">
+              Holy Ghost → IMT Campus
+            </div>
+            <div className="p-4 text-sm text-gray-600">
+              Northern Ogui Rd corridor, connecting the central hub to IMT.
+            </div>
+            <div className="p-4 flex justify-between items-center">
+              <span className="text-xs text-gray-500">Approx. 5 stops</span>
+              <button
+                onClick={() => navigate('/routes', { state: { routeName: 'Holy Ghost → IMT Campus' } })}
+                className="bg-transparent border-none cursor-pointer font-semibold text-sm text-green-400 hover:underline"
+              >
+                Plan This Route →
+              </button>
+            </div>
+          </div>
 
-        <div className="bg-white rounded-md shadow-md w-80 overflow-hidden mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-107">
-          <div className={`py-15 bg-gradient-to-r from-blue-800 to-blue-400 text-white text-center font-bold text-lg`}>
-            Holy Ghost → Agbani Town
+          {/* Route Card 2 */}
+          <div className="bg-white rounded-md shadow-md overflow-hidden transform transition-transform duration-400 hover:scale-103">
+            <div className="py-15 bg-gradient-to-r from-blue-800 to-blue-400 text-white text-center font-bold text-lg">
+              Holy Ghost → Agbani Town
+            </div>
+            <div className="p-4 text-sm text-gray-600">
+              Main southern route via Agbani Rd, serving Gariki Market and ESUT gate access.
+            </div>
+            <div className="p-4 flex justify-between items-center">
+              <span className="text-xs text-gray-500">Approx. 8 stops</span>
+              <button
+                onClick={() => navigate('/routes', { state: { routeName: 'Holy Ghost → Agbani Town' } })}
+                className="bg-transparent border-none cursor-pointer font-semibold text-sm text-blue-400 hover:underline"
+              >
+                Plan This Route →
+              </button>
+            </div>
           </div>
-          <div className="p-4 text-sm text-gray-600">
-            Main southern route via Agbani Rd, serving Gariki Market and ESUT gate access.
-          </div>
-          <div className="p-4 flex justify-between items-center">
-            <span className="text-xs text-gray-500">Approx. 8 stops</span>
-            <button className={`bg-transparent border-none cursor-pointer font-semibold text-sm text-blue-400 hover:underline`}>
-              Plan This Route →
-            </button>
-          </div>
-        </div>
 
-        <div className="bg-white rounded-md shadow-md w-80 overflow-hidden mx-auto sm:mx-0 transform transition-transform duration-400 hover:scale-107">
-          <div className={`py-15 bg-gradient-to-r from-orange-700 to-orange-400 text-white text-center font-bold text-lg`}>
-            UNEC → Okpara Avenue
-          </div>
-          <div className="p-4 text-sm text-gray-600">
-            Connects UNEC Campus and the Admin/Business district via Zik Ave.
-          </div>
-          <div className="p-4 flex justify-between items-center">
-            <span className="text-xs text-gray-500">Approx. 8 stops</span>
-            <button className={`bg-transparent border-none cursor-pointer font-semibold text-sm text-orange-400 hover:underline`}>
-              Plan This Route →
-            </button>
+          {/* Route Card 3 */}
+          <div className="bg-white rounded-md shadow-md overflow-hidden transform transition-transform duration-400 hover:scale-103">
+            <div className="py-15 bg-gradient-to-r from-orange-700 to-orange-400 text-white text-center font-bold text-lg">
+              UNEC → Okpara Avenue
+            </div>
+            <div className="p-4 text-sm text-gray-600">
+              Connects UNEC Campus and the Admin/Business district via Zik Ave.
+            </div>
+            <div className="p-4 flex justify-between items-center">
+              <span className="text-xs text-gray-500">Approx. 8 stops</span>
+              <button
+                onClick={() => navigate('/routes', { state: { routeName: 'UNEC → Okpara Avenue' } })}
+                className="bg-transparent border-none cursor-pointer font-semibold text-sm text-orange-400 hover:underline"
+              >
+                Plan This Route →
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
 
-
-    </div>
   );
 }
 

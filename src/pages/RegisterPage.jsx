@@ -78,55 +78,55 @@ const RegisterPage = () => {
       <form className="space-y-4" onSubmit={handleSubmit}>
         {error && <p className="text-sm text-red-600">{error}</p>}
 
-        <label htmlFor="username" className="text-sm">Username</label>
+        <label htmlFor="username" className="text-sm text-gray-600">Username</label>
         <input
           name="username"
           type="text"
           placeholder="Choose a username"
           value={formData.username}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded px-4 py-2"
+          className="w-full border text-gray-500 border-gray-300 rounded px-4 py-2"
         />
 
-        <label htmlFor="email" className="text-sm">Email</label>
+        <label htmlFor="email" className="text-sm text-gray-600">Email</label>
         <input
           name="email"
           type="email"
           placeholder="your@email.com"
           value={formData.email}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded px-4 py-2"
+          className="w-full text-gray-500 border border-gray-300 rounded px-4 py-2"
         />
 
-        <label htmlFor="phone" className="text-sm">Phone Number <span className="text-gray-600">(Optional)</span></label>
+        <label htmlFor="phone" className="text-sm text-gray-600">Phone Number <span className="text-gray-600">(Optional)</span></label>
         <input
           name="phone"
           type="tel"
           placeholder="Phone number (optional)"
           value={formData.phone}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded px-4 py-2"
+          className="w-full text-gray-500 border border-gray-300 rounded px-4 py-2"
         />
 
-        <label htmlFor="password" className="text-sm">Password</label>
+        <label htmlFor="password" className="text-sm text-gray-600">Password</label>
         <input
           name="password"
           type="password"
           placeholder="••••••••"
           value={formData.password}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded px-4 py-2"
+          className="w-full text-gray-500 border border-gray-300 rounded px-4 py-2"
         />
         <p className="text-xs text-gray-600">Must be at least 8 characters long.</p>
 
-        <label htmlFor="confirmPassword" className="text-sm">Confirm Password</label>
+        <label htmlFor="confirmPassword" className="text-sm text-gray-600">Confirm Password</label>
         <input
           name="confirmPassword"
           type="password"
           placeholder="••••••••"
           value={formData.confirmPassword}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded px-4 py-2"
+          className="w-full text-gray-500 border border-gray-300 rounded px-4 py-2"
         />
 
         <button

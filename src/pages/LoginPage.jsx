@@ -50,24 +50,24 @@ const LoginPage = () => {
     <ModalWrapper title="Sign in to your account">
       <p className="text-sm text-gray-600 mb-4">Access your ticket and profile</p>
       <form className="space-y-4" onSubmit={handleSubmit}>
-        <label htmlFor="username" className="text-sm">Username</label>
+        <label htmlFor="username" className="text-sm text-gray-600">Username</label>
         <input
           type="text"
           name="username"
           placeholder="Username"
           value={credentials.username}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-700"
+          className="w-full text-gray-500 border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-700"
         />
 
-        <label htmlFor="password" className="text-sm">Password</label>
+        <label htmlFor="password" className="text-sm text-gray-600">Password</label>
         <input
           type="password"
           name="password"
           placeholder="••••••••"
           value={credentials.password}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-700"
+          className="w-full text-gray-500 border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-700"
         />
 
         <div className="flex items-center justify-between text-sm text-gray-600">

@@ -7,8 +7,9 @@ import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import VerifyTicketPage from './pages/VerifyTicketPage';
-// Removed unused import
 import RoutesPage from './pages/RoutesPage';
+import Dashboard from './pages/Dashboard'; // Import the Dashboard component
+import Profile from './pages/Profile'; // Import the Profile page
 
 function Layout() {
   const [theme, setTheme] = useState('light');
@@ -305,10 +306,10 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/routes" element={<RoutesPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} /> {/* Add Profile Route */}
           <Route path="/users/login" element={<LoginPage />} />
           <Route path="/users/register" element={<RegisterPage />} />
           <Route path="/verify-ticket" element={<VerifyTicketPage />} />
-          {/* <Route path="*" element={<NotFoundPage />} /> */}
         </Route>
       </Routes>
     </>
