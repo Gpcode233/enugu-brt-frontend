@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, Polyline, CircleMarker, useMap } from 'react-leaflet';
 
 // Helper component to center map on selected route
 function RouteFocus({ coordinates }) {
@@ -104,11 +104,11 @@ function RoutesPage() {
   ];
 
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
+    <div className=" min-h-screen py-12">
       {/* Header Section */}
       <div className="text-center mb-8">
-        <h1 className="text-2xl md:text-3xl font-extrabold text-green-700">BRT Routes Directory</h1>
-        <p className="text-gray-600 mt-2 font-normal text-sm md:text-base">
+        <h1 className="text-2xl md:text-3xl font-extrabold text-green-500">BRT Routes Directory</h1>
+        <p className="text-gray-400 mt-2 font-normal text-sm md:text-base">
           Explore all available routes and stops within the Enugu BRT network. Click on a route to view its path and stop details on the interactive map.
         </p>
       </div>
@@ -117,7 +117,7 @@ function RoutesPage() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
         {/* Map */}
         <div
-          className="col-span-2 bg-white shadow-md rounded-lg overflow-hidden relative z-0 border-4 border-gray-100"
+          className="col-span-2 shadow-md rounded-lg overflow-hidden relative z-0 border-4 border-gray-100"
           style={{ height: '440px' }} // Fixed height for the map container
         >
           <div className="h-full">
@@ -133,12 +133,15 @@ function RoutesPage() {
               {/* Render all routes */}
               {routes.map((route, routeIndex) => (
                 <React.Fragment key={routeIndex}>
+                  {/* Main Route Line */}
                   <Polyline
                     positions={route.coordinates}
                     color={route.color}
                     weight={activeRouteIndex === routeIndex ? 6 : 3}
                     opacity={activeRouteIndex === routeIndex ? 1 : 0.5}
                   />
+
+                  {/* Main Stops */}
                   {route.stops.map((stop, stopIndex) => (
                     <Marker key={`${stop.name}-${stopIndex}`} position={stop.position}>
                       <Popup>
@@ -147,6 +150,22 @@ function RoutesPage() {
                       </Popup>
                     </Marker>
                   ))}
+
+                  {/* Sub-Stops */}
+                  {route.subStops?.map((subStop, subStopIndex) => (
+                    <CircleMarker
+                      key={`subStop-${routeIndex}-${subStopIndex}`}
+                      center={subStop.position}
+                      radius={5}
+                      color={route.color}
+                      fillColor={route.color}
+                      fillOpacity={0.8}
+                    >
+                      <Popup>
+                        <p>{subStop.description}</p>
+                      </Popup>
+                    </CircleMarker>
+                  ))}
                 </React.Fragment>
               ))}
             </MapContainer>
@@ -154,7 +173,7 @@ function RoutesPage() {
         </div>
 
         {/* Routes List */}
-        <div className="bg-white shadow-md rounded-lg p-4">
+        <div className="bg-gray-50 shadow-md rounded-lg p-4 overflow-y-auto" style={{ maxHeight: '440px' }}>
           <h2 className="text-base font-bold text-gray-800 mb-3">Available Routes ({routes.length})</h2>
           {routes.map((route, index) => (
             <div key={index} className="border border-gray-200 rounded-lg mb-3">
