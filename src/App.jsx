@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react'; // Add useState and useEffect
 import { Routes, Route, Navigate, Outlet, NavLink, useLocation } from 'react-router-dom';
 import ModalWrapper from './components/ModalWrapper';
 import RegisterPage from './pages/RegisterPage';
@@ -7,6 +8,8 @@ import VerifyTicketPage from './pages/VerifyTicketPage';
 import NotFoundPage from './pages/NotFoundPage';
 import RoutesPage from './pages/RoutesPage';
 import Dashboard from './pages/Dashboard';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Layout() {
   const [theme, setTheme] = useState('light');
@@ -44,62 +47,89 @@ function Layout() {
 }
 
 function Navbar() {
+  const [isMobileOpen, setIsMobileOpen] = useState(false); // Add state for mobile menu
+
+  const navLinkClass = ({ isActive }) =>
+    `text-sm px-3 py-2 font-medium rounded transition ${
+      isActive ? 'text-green-700 font-semibold bg-green-50' : 'text-gray-400 hover:text-green-700'
+    }`;
+
   return (
-    <nav className="bg-white border-b border-gray-100 shadow-xl sticky top-0 z-30">
+    <nav className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-xl sticky top-0 z-30">
       <div className="max-w-7xl mx-auto px-4 lg:px-8 flex h-16 items-center justify-between">
         <div className="flex items-center gap-6">
-        <NavLink to="/" className="flex items-center font-bold text-green-700 text-2xl tracking-tight whitespace-nowrap">
-          <span className="text-4xl mr-2">🚌</span>
+          <NavLink to="/" className="flex items-center font-bold text-green-700 dark:text-green-400 text-2xl tracking-tight whitespace-nowrap">
+            <span className="text-4xl mr-2">🚌</span>
             Njem BRT
-        </NavLink>
+          </NavLink>
           <div className="hidden md:flex gap-4 ml-78">
-            <NavLink to="/" end className={({ isActive }) =>
-              `text-sm px-3 py-2 font-medium rounded transition ${isActive ? 'text-green-700 font-semibold bg-green-50' : 'text-gray-700 hover:text-green-700'}`
-            }>Plan Journey</NavLink>
-            <NavLink to="/routes" className={({ isActive }) =>
-              `text-sm px-3 py-2 font-medium rounded transition ${isActive ? 'text-green-700 font-semibold bg-green-50' : 'text-gray-700 hover:text-green-700'}`
-            }>Routes</NavLink>
-            <NavLink to="/verify-ticket" className={({ isActive }) =>
-              `text-sm px-3 py-2 font-medium rounded transition ${isActive ? 'text-green-700 font-semibold bg-green-50' : 'text-gray-700 hover:text-green-700'}`
-            }>Verify Ticket</NavLink>
+            <NavLink to="/" end className={navLinkClass}>
+              Plan Journey
+            </NavLink>
+            <NavLink to="/routes" className={navLinkClass}>
+              Routes
+            </NavLink>
+            <NavLink to="/verify-ticket" className={navLinkClass}>
+              Verify Ticket
+            </NavLink>
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <NavLink to="/users/login" className={({ isActive }) =>
-            `hidden md:inline-block px-4 py-2 rounded font-medium transition ${isActive ? 'underline text-green-700' : 'text-gray-700 hover:text-green-700'}`
-          }>Login</NavLink>
-          <NavLink to="/users/register" className={({ isActive }) =>
-            `ml-1 transition hidden md:inline-block rounded px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium shadow ${isActive ? 'ring-2 ring-green-400' : ''}`
-          }>Register</NavLink>
+          <button
+            onClick={() => setIsMobileOpen(!isMobileOpen)} // Toggle mobile menu
+            className="md:hidden text-gray-700 dark:text-gray-300 hover:text-green-700 dark:hover:text-green-400"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          </button>
+          {/* Login Button */}
+          <NavLink
+            to="/users/login"
+            className="text-white bg-transparent px-4 py-2 rounded transition duration-200 hover:bg-gray-700"
+          >
+            Login
+          </NavLink>
+          {/* Register Button */}
+          <NavLink
+            to="/users/register"
+            className="bg-green-600 text-white px-4 py-2 rounded transition duration-200 hover:bg-green-700"
+          >
+            Register
+          </NavLink>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isMobileOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 p-4 space-y-4">
+        <div className="md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-4 space-y-4">
           <div className="flex flex-col space-y-2">
-            <NavLink to="/" end className={navLinkClass}>Plan Journey</NavLink>
-            <NavLink to="/routes" className={navLinkClass}>Routes</NavLink>
-            <NavLink to="/verify-ticket" className={navLinkClass}>Verify Ticket</NavLink>
+            <NavLink to="/" end className={navLinkClass}>
+              Plan Journey
+            </NavLink>
+            <NavLink to="/routes" className={navLinkClass}>
+              Routes
+            </NavLink>
+            <NavLink to="/verify-ticket" className={navLinkClass}>
+              Verify Ticket
+            </NavLink>
           </div>
 
           <hr className="border-gray-400 dark:border-gray-700" />
 
           <div className="flex flex-col space-y-2">
-            {!user ? (
-              <>
-                <NavLink to="/users/login" className={navLinkClass}>Login</NavLink>
-                <NavLink to="/users/register" className={navLinkClass}>Register</NavLink>
-              </>
-            ) : (
-              <>
-                <NavLink to="/profile" className={navLinkClass}>Profile</NavLink>
-                <NavLink to="/my-tickets" className={navLinkClass}>My Tickets</NavLink>
-                <button onClick={handleLogout} className="text-left px-3 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800 rounded">
-                  Logout
-                </button>
-              </>
-            )}
+            <NavLink
+              to="/users/login"
+              className="text-white bg-transparent px-4 py-2 rounded transition duration-200 hover:bg-gray-700"
+            >
+              Login
+            </NavLink>
+            <NavLink
+              to="/users/register"
+              className="bg-green-600 text-white px-4 py-2 rounded transition duration-200 hover:bg-green-700"
+            >
+              Register
+            </NavLink>
           </div>
         </div>
       )}
@@ -107,15 +137,13 @@ function Navbar() {
   );
 }
 
-
-
 function Footer() {
   return (
     <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 px-4 py-10 mt-16">
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
         <div>
           <h4 className="text-gray-900 dark:text-white text-lg font-semibold mb-3">🚌 Njem BRT</h4>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <p className="text-sm font-normal text-gray-600 dark:text-gray-400">
             Making transportation smarter, faster, and more convenient across Enugu. Enjoy a modern, eco-friendly BRT experience.
           </p>
         </div>
@@ -147,22 +175,21 @@ function Footer() {
   );
 }
 
-
 export default function App() {
   return (
     <>
+      <ToastContainer />
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/routes" element={<RoutesPage />} />
-          <Route path="/verify-ticket" element={<VerifyTicketPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/users/login" element={<LoginPage />} />
           <Route path="/users/register" element={<RegisterPage />} />
+          <Route path="/verify-ticket" element={<VerifyTicketPage />} />
           <Route path="*" element={<NotFoundPage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
         </Route>
       </Routes>
-      <ToastContainer position="top-right" autoClose={2000} hideProgressBar />
     </>
   );
 }
