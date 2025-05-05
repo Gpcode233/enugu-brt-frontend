@@ -6,6 +6,9 @@ import LoginPage from './pages/LoginPage';
 import VerifyTicketPage from './pages/VerifyTicketPage';
 import NotFoundPage from './pages/NotFoundPage';
 import RoutesPage from './pages/RoutesPage';
+import MyTicketsPage from './pages/MyTicketsPage';
+import PurchaseTicketPage from './pages/PurchaseTicketPage';
+
 
 function Layout() {
   return (
