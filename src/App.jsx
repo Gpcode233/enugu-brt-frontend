@@ -82,10 +82,10 @@ function Navbar() {
     <nav className="bg-white border-b border-gray-100 shadow-xl sticky top-0 z-30">
       <div className="max-w-7xl mx-auto px-4 lg:px-8 flex h-16 items-center justify-between">
         <div className="flex items-center gap-6">
-        <NavLink to="/" className="flex items-center font-bold text-green-700 text-2xl tracking-tight whitespace-nowrap">
-          <span className="text-4xl mr-2">🚌</span>
+          <NavLink to="/" className="flex items-center font-bold text-green-700 text-2xl tracking-tight whitespace-nowrap">
+            <span className="text-4xl mr-2">🚌</span>
             Njem BRT
-        </NavLink>
+          </NavLink>
           <div className="hidden md:flex gap-4 ml-80">
             <NavLink to="/" end className={({ isActive }) =>
               `text-sm px-3 py-2 font-medium rounded transition ${isActive ? 'text-green-700 font-semibold bg-green-50' : 'text-gray-700 hover:text-green-700'}`
@@ -98,16 +98,9 @@ function Navbar() {
             }>Verify Ticket</NavLink>
           </div>
         </div>
-        <div className="flex items-center gap-2">
-          <NavLink to="/users/login" className={({ isActive }) =>
-            `hidden md:inline-block px-4 py-2 rounded font-medium transition ${isActive ? 'underline text-green-700' : 'text-gray-700 hover:text-green-700'}`
-          }>Login</NavLink>
-          <NavLink to="/users/register" className={({ isActive }) =>
-            `ml-1 transition hidden md:inline-block rounded px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium shadow ${isActive ? 'ring-2 ring-green-400' : ''}`
-          }>Register</NavLink>
-        </div>
-                {/* Desktop auth for user dashboard */}
-                <div className="hidden md:flex items-center gap-4 relative">
+
+        {/* Desktop auth for user dashboard */}
+        <div className="hidden md:flex items-center gap-4 relative">
           {!user ? (
             <>
               <NavLink to="/users/login" className={navLinkClass}>Login</NavLink>
@@ -221,7 +214,7 @@ function Footer() {
           <p className="text-sm text-gray-400">Email: support@njembrt.com</p>
           <p className="text-sm text-gray-400">Phone: +234 808 065 1985</p>
           <p className="text-sm text-gray-400">       +234 804 502 6868</p>
-          <p className="text-sm text-gray-400">       +234 812 345 6789</p>            
+          <p className="text-sm text-gray-400">       +234 812 345 6789</p>
           <p className="text-sm text-gray-400">Enugu, Nigeria</p>
         </div>
       </div>
